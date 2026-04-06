@@ -1,4 +1,3 @@
 package com.example.usuarios_api;
 
-public class UsuarioResponse {
-}
+public record UsuarioResponse(Long id, String nome, String email) {}
