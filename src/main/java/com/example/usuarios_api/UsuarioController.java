@@ -22,7 +22,7 @@ public class UsuarioController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioResponse> buscar(@PathVariable Long id) {
-        return ResponseEntity.ok(usuarioService.buscarPorId(id));
+        return ResponseEntity.ok(usuarioService.buscarId(id));
 }
 
     @DeleteMapping("/{id}")
