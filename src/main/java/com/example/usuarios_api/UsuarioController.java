@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/usuarios")
 public class UsuarioController {
@@ -20,11 +22,15 @@ public class UsuarioController {
     public ResponseEntity<UsuarioResponse> criar(@RequestBody @Valid UsuarioRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.criar(request));
     }
+    @GetMapping
+    public ResponseEntity<List<UsuarioResponse>> listarTodos() {
+        return ResponseEntity.ok(usuarioService.listarTodos());
+
+    }
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioResponse> buscar(@PathVariable Long id) {
         return ResponseEntity.ok(usuarioService.buscarId(id));
-}
-
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         usuarioService.deletar(id);
